@@ -1,10 +1,7 @@
 package com.marketplace.entity;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,37 +16,25 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "tb_usuario")
-public class Usuario {
+
+@Table(name = "tb_endereco")
+public class Endereco {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id_usuario;
-	
-	@Column(nullable = false)
-	private String nome;
-	@Column(nullable = false, unique = true, length = 11)
-	private String cpf;
-	
-	@Column(nullable = false)
-	private String email;
+	private Long id_endereco;
 	@Autowired
-	private Telefone telefone;
-	@Autowired
-	private Endereco endereco;
-	
-	private Date dt_criacao;
-	private Date dt_nascimento;
-	@Column(nullable = false)
-	private char sexo;
-	//private StatusUsuario statusUsuario;
-	
-	
-	
-	
+	private Usuario id_usuario;
+	private String cep;
+	private String Logradouro;
+	private String bairro;
+	private String cidade;
+	private String complemento;
+	private String numero;
+	private String estado;
 	
 	
 	

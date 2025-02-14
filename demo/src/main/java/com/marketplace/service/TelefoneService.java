@@ -3,13 +3,12 @@ package com.marketplace.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.marketplace.repository.UsuarioRepository;
+import com.marketplace.repository.TelefoneRepository;
 
 @Service
-public class UsuarioService {
+public class TelefoneService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
+	private TelefoneRepository telefonerepository;
 	
 }
