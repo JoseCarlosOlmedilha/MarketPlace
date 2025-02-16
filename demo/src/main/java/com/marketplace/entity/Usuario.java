@@ -2,13 +2,14 @@ package com.marketplace.entity;
 
 import java.util.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,31 +27,30 @@ import lombok.Setter;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id_usuario;
+	@GeneratedValue( strategy = GenerationType.IDENTITY )
+	private Long id_Usuario;
 	
-	@Column(nullable = false)
+	@Column(name = "nome" , nullable = false)
 	private String nome;
-	@Column(nullable = false, unique = true, length = 11)
+
+	@Column(name = "cpf", nullable = false, unique = true, length = 11)
 	private String cpf;
 	
-	@Column(nullable = false)
+    @Column(name = "email", nullable = false)
 	private String email;
-	@Autowired
-	private Telefone telefone;
-	@Autowired
-	private Endereco endereco;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_telefone")
+	private Telefone telefone;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_endereco")
+	private Endereco endereco;
+
 	private Date dt_criacao;
 	private Date dt_nascimento;
-	@Column(nullable = false)
+
+	@Column(name = "sexo", nullable = false)
 	private char sexo;
-	//private StatusUsuario statusUsuario;
-	
-	
-	
-	
-	
-	
 	
 }
