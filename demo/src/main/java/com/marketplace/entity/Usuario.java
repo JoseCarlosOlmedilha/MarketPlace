@@ -1,11 +1,15 @@
 package com.marketplace.entity;
 
 import java.util.Date;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -35,6 +39,14 @@ public class Usuario {
     @Column(name = "email", nullable = false)
 	private String email;
 	
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_telefone")
+	private Telefone telefone;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_endereco")
+	private Endereco endereco;
+
 	private Date dt_criacao;
 	private Date dt_nascimento;
 
