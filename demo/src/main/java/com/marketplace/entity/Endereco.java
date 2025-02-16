@@ -1,6 +1,5 @@
 package com.marketplace.entity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +23,10 @@ import lombok.Setter;
 public class Endereco {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id_endereco;
-	@Autowired
-	private Usuario id_usuario;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idEndereco;
+	
+	
 	private String cep;
 	private String Logradouro;
 	private String bairro;
