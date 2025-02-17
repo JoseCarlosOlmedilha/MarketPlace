@@ -2,10 +2,14 @@ package com.marketplace.entity;
 
 import java.util.Date;
 
+//import com.marketplace.entity.enumeration.StatusUsuario;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+//import jakarta.persistence.EnumType;
+//import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -28,15 +32,16 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue( strategy = GenerationType.IDENTITY )
-	private Long id_Usuario;
+	@Column(name = "Id_usuario")
+	private Long id;
 	
-	@Column(name = "nome" , nullable = false)
+	@Column(name = "Nome" , nullable = false)
 	private String nome;
 
-	@Column(name = "cpf", nullable = false, unique = true, length = 11)
+	@Column(name = "Cpf", nullable = false, unique = true, length = 11)
 	private String cpf;
 	
-    @Column(name = "email", nullable = false)
+    @Column(name = "Email", nullable = false)
 	private String email;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -47,10 +52,17 @@ public class Usuario {
 	@JoinColumn(name = "Id_endereco")
 	private Endereco endereco;
 
+	@Column(name = "Dt_criacao")
 	private Date dt_criacao;
+
+	@Column(name = "DT_nascimento")
 	private Date dt_nascimento;
 
-	@Column(name = "sexo", nullable = false)
+	@Column(name = "Sexo", nullable = false)
 	private char sexo;
 	
+	
+	//@Column(name = "St_usuario")
+	//@Enumerated(EnumType.STRING)
+	//private StatusUsuario status;
 }

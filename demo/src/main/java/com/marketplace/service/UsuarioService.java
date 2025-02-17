@@ -1,5 +1,7 @@
 package com.marketplace.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +15,22 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	
-	public void cadastrarUsuario(Usuario usuario) {
-		usuarioRepository.save(usuario);
+	public Usuario cadastrarUsuario(Usuario usuario) {
+		return usuarioRepository.save(usuario);
 	}
 
-	public String deletarUsuario(Usuario usuario){
-		usuarioRepository.delete(usuario);
+	public String deletarUsuario(Long id) {
+		usuarioRepository.deleteById(id);
 		return "Usuário deletado com sucesso!";	
 	}
 	
     public Usuario buscarPorId(Long id) {
         return usuarioRepository.findById(id).orElse(null);
     }
-
+	
+	public List<Usuario> buscarTodosUsuarios(){
+		List<Usuario> lista = usuarioRepository.findAll();
+		return lista;
+	}
 	
 }
