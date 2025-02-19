@@ -4,7 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marketplace.repository.UsuarioRepository;
+
+import exception.usuarioexception.UsuarioNullException;
+
 import com.marketplace.entity.Usuario;
+
 
 @Service
 public class UsuarioService {
@@ -13,8 +17,11 @@ public class UsuarioService {
 	private UsuarioRepository usuarioRepository;
 	
 	
-	public void cadastrarUsuario(Usuario usuario) {
-		usuarioRepository.save(usuario);
+	public Usuario cadastrarUsuario(Usuario usuario) {
+		if(usuario.getNome() == null || usuario.getCpf() == null || usuario.getEmail() == null){
+			throw new UsuarioNullException();
+		}
+		return usuarioRepository.save(usuario);
 	}
 
 	public String deletarUsuario(Usuario usuario){

@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor 
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
 @Table(name = "tb_telefone")
 public class Telefone {
 
